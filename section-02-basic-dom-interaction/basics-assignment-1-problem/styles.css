@@ -37,6 +37,10 @@ p {
 input {
   font: inherit;
   border: 1px solid #ccc;
+  width: 50%; 
+  height: 30px; 
+  font-size: 20px;
+  text-align: center;
 }
 
 input:focus {
@@ -60,13 +64,6 @@ button:active {
   background-color: #ec3169;
   border-color: #ec3169;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
-}
-
-input {
-  width: 50%; 
-  height: 30px; 
-  font-size: 20px;
-  text-align: center;
 }
 
 img {
