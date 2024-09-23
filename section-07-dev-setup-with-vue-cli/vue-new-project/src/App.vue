@@ -5,10 +5,12 @@
       <friend-contact
         v-for="friend in friends"
         :key="friend.id"
+        :id="friend.id"
         :fullname="friend.name"
         :phone-contact="friend.phone"
         :email-private="friend.email"
-        :is-favorite="true"
+        :is-favorite="friend.favorited"
+        @toogle-favorite="toogleFavoriteStatus"
       ></friend-contact>
     </ul>
   </section>
@@ -25,16 +27,24 @@ export default {
           name: "Manuel Lorenz",
           phone: "01234 5678 991",
           email: "manuel@localhost.com",
+          favorited: true
         },
         {
           id: "julie",
           name: "Julie Jones",
           phone: "09876 543 221",
           email: "julie@localhost.com",
+          favorited: false
         },
       ],
     };
   },
+  methods : {
+    toogleFavoriteStatus(friendId){
+      const foundFriend = this.friends.find((friend) => friend.id === friendId);
+      foundFriend.favorited = !foundFriend.favorited;
+    }
+  }
 };
 </script>
 

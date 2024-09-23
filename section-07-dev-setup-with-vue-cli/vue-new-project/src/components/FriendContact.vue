@@ -1,7 +1,7 @@
 <template>
   <li>
     <h2>{{ fullname }} 
-      {{ isFavoriteFriend ? '(Favorited)' : '' }}
+      {{ isFavorite ? '(Favorited)' : '' }}
     </h2>
     <button @click="toogleDetails()">
       {{ detailsAreVisible ? "Hide" : "Show" }} Details
@@ -19,6 +19,10 @@
 <script>
 export default {
   props: {
+    id : {
+      type: String,
+      required: true
+    },
     fullname : {
       type: String,
       required: false
@@ -39,8 +43,7 @@ export default {
   },
   data() {
     return {
-      detailsAreVisible: false,
-      isFavoriteFriend : this.isFavorite
+      detailsAreVisible: false
     };
   },
   methods: {
@@ -48,7 +51,7 @@ export default {
       this.detailsAreVisible = !this.detailsAreVisible;
     },
     toogleFavorite(){
-      this.isFavoriteFriend = !this.isFavoriteFriend;
+      this.$emit('toogle-favorite', this.id);
     }
   },
 };
