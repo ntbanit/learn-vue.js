@@ -41,6 +41,7 @@ export default {
       default: false
     },
   },
+  emits: ['toogle-favorite'],
   data() {
     return {
       detailsAreVisible: false
