@@ -6,11 +6,7 @@
       <friend-contact
         v-for="friend in friends"
         :key="friend.id"
-        :id="friend.id"
-        :fullname="friend.name"
-        :phone-contact="friend.phone"
-        :email-private="friend.email"
-        :is-favorite="friend.favorited"
+        :friend="friend"
         @toogle-favorite="toogleFavoriteStatus"
         @delete="deleteFriend"
       ></friend-contact>
@@ -46,14 +42,7 @@ export default {
       const foundFriend = this.friends.find((friend) => friend.id === friendId);
       foundFriend.favorited = !foundFriend.favorited;
     },
-    addFriend(name, phone, mail){
-      const newFriend = {
-        id: new Date().toISOString(),
-        name: name,
-        phone: phone,
-        email: mail,
-        favorited: false
-      };
+    addFriend(newFriend){
       this.friends.push(newFriend);
     },
     deleteFriend(friendId){

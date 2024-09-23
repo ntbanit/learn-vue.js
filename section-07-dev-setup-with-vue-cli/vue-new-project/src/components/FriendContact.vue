@@ -1,7 +1,7 @@
 <template>
   <li>
-    <h2>{{ fullname }} 
-      {{ isFavorite ? '(Favorited)' : '' }}
+    <h2>{{ friend.name }} 
+      {{ friend.favorited ? '(Favorited)' : '' }}
     </h2>
     <button @click="toogleDetails()">
       {{ detailsAreVisible ? "Hide" : "Show" }} Details
@@ -9,10 +9,10 @@
     <button @click="toogleFavorite()">
       Toogle Favorite
     </button>
-    <button @click="$emit('delete', this.id)"> Delete</button>
+    <button @click="$emit('delete', this.friend.id)"> Delete</button>
     <ul v-if="detailsAreVisible">
-      <li><strong>Phone:</strong> {{ phoneContact }}</li>
-      <li><strong>Email:</strong> {{ emailPrivate }}</li>
+      <li><strong>Phone:</strong> {{ friend.phone }}</li>
+      <li><strong>Email:</strong> {{ friend.email }}</li>
     </ul>
   </li>
 </template>
@@ -20,27 +20,10 @@
 <script>
 export default {
   props: {
-    id : {
-      type: String,
+    friend : {
+      type: Object,
       required: true
-    },
-    fullname : {
-      type: String,
-      required: false
-    },
-    phoneContact : {
-      type: String,
-      required: false
-    },
-    emailPrivate : {
-      type: String,
-      required: false
-    },
-    isFavorite : {
-      type: Boolean,
-      required: false,
-      default: false
-    },
+    }
   },
   emits: ['toogle-favorite', 'delete'],
   data() {
@@ -53,8 +36,11 @@ export default {
       this.detailsAreVisible = !this.detailsAreVisible;
     },
     toogleFavorite(){
-      this.$emit('toogle-favorite', this.id);
+      this.$emit('toogle-favorite', this.friend.id);
     }
   },
+  mounted(){
+    // console.log(this.friend)
+  }
 };
 </script>

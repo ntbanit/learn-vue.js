@@ -12,7 +12,7 @@
             <label>Email: </label>
             <input type="email" v-model="inputEmail"/>
         </div>
-        <button>Add Friend</button>
+        <button type="submit">Add Friend</button>
     </form>
 </template>
 
@@ -28,7 +28,17 @@ export default{
     },
     methods : {
         addFriend(){
-            this.$emit('add-friend', this.inputName, this.inputPhone, this.inputEmail)
+            const newFriend = {
+                id: new Date().toISOString(),
+                name: this.inputName,
+                phone: this.inputPhone,
+                email: this.inputEmail,
+                favorited: false
+            };
+            this.$emit('add-friend', newFriend);
+            this.inputName = '';
+            this.inputPhone = '';
+            this.inputEmail = '';
         }
     }
 }
