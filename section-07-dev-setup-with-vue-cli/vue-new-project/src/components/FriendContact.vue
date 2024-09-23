@@ -9,6 +9,7 @@
     <button @click="toogleFavorite()">
       Toogle Favorite
     </button>
+    <button @click="$emit('delete', this.id)"> Delete</button>
     <ul v-if="detailsAreVisible">
       <li><strong>Phone:</strong> {{ phoneContact }}</li>
       <li><strong>Email:</strong> {{ emailPrivate }}</li>
@@ -41,7 +42,7 @@ export default {
       default: false
     },
   },
-  emits: ['toogle-favorite'],
+  emits: ['toogle-favorite', 'delete'],
   data() {
     return {
       detailsAreVisible: false
