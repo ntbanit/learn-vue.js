@@ -1,7 +1,7 @@
 <template>
     <div>
-        <user-data></user-data>
-        <active-user></active-user>
+        <user-data @update-data="updateData"></user-data>
+        <active-user :person="person"></active-user>
     </div>
 </template>
 
@@ -9,8 +9,16 @@
 export default {
     data(){
         return {
-            
+            person : {
+              username : '',
+              age : ''
+            }
         }
+    },
+    methods : {
+      updateData(inputPerson){
+        this.person = inputPerson ;
+      }
     }
 }
 </script>

@@ -1,12 +1,12 @@
 <template>
-    <form>
+    <form @submit.prevent="updateData">
         <div>
             <label>Username:</label>
-            <input type="text"/>
+            <input type="text" v-model="inputUsername"/>
         </div>
         <div>
             <label>Age:</label>
-            <input type="number" />
+            <input type="number" v-model="inputAge"/>
         </div>
         <button type="submit">Update info</button>
     </form>
@@ -14,6 +14,24 @@
 
 <script>
 export default {
-
+    emits :['update-data'],
+    mounted(){
+        console.log('mounted user-data');
+    },
+    data(){
+        return {
+            inputUsername : '',
+            inputAge: ''
+        }
+    },
+    methods : {
+        updateData(){
+            const inputPerson = {
+                username : this.inputUsername,
+                age : this.inputAge
+            };
+            this.$emit('update-data', inputPerson);
+        }
+    }
 }
 </script>
