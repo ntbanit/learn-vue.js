@@ -26,11 +26,17 @@ export default {
     },
     methods : {
         updateData(){
+            if(!this.inputUsername || !this.inputAge){
+                alert('Please input value !');
+                return;
+            }
             const inputPerson = {
                 username : this.inputUsername,
                 age : this.inputAge
             };
             this.$emit('update-data', inputPerson);
+            this.inputUsername = '';
+            this.inputAge = '';
         }
     }
 }

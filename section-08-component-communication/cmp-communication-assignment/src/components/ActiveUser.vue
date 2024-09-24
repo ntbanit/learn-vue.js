@@ -1,8 +1,9 @@
 <template>
     <div>
         <ul>
-            <li> Username: {{ person.username }}</li>
-            <li> Age: {{ person.age }}</li>
+            <li v-if="person.username && person.age">
+                {{ person.username }} is {{ person.age }} years old.
+            </li>
         </ul>
     </div>
 </template>
