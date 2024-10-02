@@ -25,12 +25,12 @@
 </template>
 
 <script>
-import TheHeader from './components/TheHeader.vue';
+import TheHeader from './components/layout/TheHeader.vue';
 // import BadgeList from './components/BadgeList.vue';
 // import UserInfo from './components/UserInfo.vue';
 // import CourseGoals from './components/CourseGoals.vue';
-import ActiveGoal from './components/ActiveGoal.vue';
-import ManageGoal from './components/ManageGoal.vue';
+import ActiveGoal from './components/goals/ActiveGoal.vue';
+import ManageGoal from './components/goals/ManageGoal.vue';
 
 export default {
   components:{
