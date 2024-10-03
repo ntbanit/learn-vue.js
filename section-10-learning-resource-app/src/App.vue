@@ -1,38 +1,24 @@
 <template>
     <TheHeader title="Remember Me"></TheHeader>
-    <StoredResources :resources="storedResources"></StoredResources>
+    <TheResources></TheResources>
 </template>
 
 <script>
 import TheHeader from './components/layouts/TheHeader.vue';
-import StoredResources from './components/learning-resources/StoredResources.vue';
+import TheResources from './components/learning-resources/TheResources.vue';
 export default {
     components: {
         TheHeader,
-        StoredResources
+        TheResources: TheResources
     },
     data() {
         return {
-            storedResources: [
-                {
-                    id: 'udemy',
-                    title: 'LG CNS Udemy',
-                    description: 'Learning Courses that provided by company',
-                    link: 'https://lg-cns.udemy.com/'
-                },
-                {
-                    id: 'youtube',
-                    title: 'Youtube',
-                    description: 'Online videos that share publicly',
-                    link: 'https://www.youtube.com/'
-                }
-            ]
+            
         };
     },
     mounted() {
         // console.log(this.storedResources);
-    }
-
+    },
 }
 </script>
 

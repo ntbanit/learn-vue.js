@@ -15,12 +15,7 @@
 
 <script>
 export default {
-    props: {
-        resource: {
-            type: Object,
-            required: true
-        }
-    }
+    props: ['resource']
 };
 </script>
 
@@ -47,7 +42,7 @@ p {
 
 a {
     text-decoration: none;
-    color: #ce5c00;
+    color: purple;
 }
 
 a:hover,
