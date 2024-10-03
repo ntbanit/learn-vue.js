@@ -1,4 +1,13 @@
 <template>
+    <BaseDialog v-if="invalidInput" title="Invalid Input" @close="closeDialog">
+        <template #default>
+            <p>Something wrong!</p>
+            <p>Please check your input again and make sure them not empty</p>
+        </template>
+        <!-- <template #actions>
+            <BaseButton @click="closeDialog">Okey</BaseButton>
+        </template> -->
+    </BaseDialog>
     <BaseCard @submit.prevent="saveResource">
         <form>
             <div>
@@ -31,12 +40,19 @@ export default {
                 title: '',
                 description: '',
                 link: ''
-            }
+            },
+            invalidInput : false
         }
 
     },
     methods: {
         saveResource() {
+            if (this.inputResource.title.trim() === ''
+                || this.inputResource.description.trim() === ''
+                || this.inputResource.link.trim() === '') {
+                this.invalidInput = true;
+                return;
+            }
             this.inputResource.id = new Date().toISOString();
 
             const newResource = { ...this.inputResource };
@@ -45,7 +61,15 @@ export default {
             Object.keys(this.inputResource).forEach(key => {
                 this.inputResource[key] = '';
             });
+        },
+        closeDialog(){
+            this.invalidInput = false;
         }
+    },
+    mounted(){
+        console.log('inputResource mounted');
+        console.log(this.inputResource);
+        console.log(this.invalidInput);
     }
 }
 </script>
