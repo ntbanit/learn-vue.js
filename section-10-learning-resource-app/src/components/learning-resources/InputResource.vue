@@ -67,9 +67,7 @@ export default {
         }
     },
     mounted(){
-        console.log('inputResource mounted');
-        console.log(this.inputResource);
-        console.log(this.invalidInput);
+        // console.log('inputResource mounted');
     }
 }
 </script>
